@@ -3,6 +3,7 @@ using server.Robot.src;
 using SimpleHttp;
 using System;
 using System.Threading;
+using OpenSTAADUI;
 
 namespace server
 {
@@ -10,23 +11,30 @@ namespace server
 	{
 		public static void Main(string[] args)
 		{
-            //Route.Add("/", (req, res, props) =>
-            //{
-            //	res.AsText("pasok!");
-            //});
+			//Route.Add("/", (req, res, props) =>
+			//{
+			//	res.AsText("pasok!");
+			//});
 
-            //HttpServer.ListenAsync(
-            //	1630,
-            //	CancellationToken.None,
-            //	Route.OnHttpRequestAsync
-            //	).Wait();
+			//HttpServer.ListenAsync(
+			//	1630,
+			//	CancellationToken.None,
+			//	Route.OnHttpRequestAsync
+			//	).Wait();
 
-            //StaadMain.Tak();
-            StaadMain.Quit();
-            Console.ReadKey();
+			//StaadMain.Tak();
+			StaadMain.Connect();
+			//if (OSt != null)
+			//{
+			//	object bs;
+			//	bs = OSt.GetBaseUnit();
+			//	Console.WriteLine("Pumasok " + bs);
+			//}
 
-            //RobotMain.Bot();
+			Console.ReadKey();
 
-        }
+			//RobotMain.Bot();
+
+		}
 	}
 }
