@@ -5,20 +5,13 @@ namespace server.Staad.src
 {
 	class StaadMain
 	{
-		public static void Tak()
-		{
-			OpenSTAAD OSt = null;
-			try
-			{
-				Type staadType = Type.GetTypeFromProgID("StaadPro.OpenSTAAD");
-				Console.WriteLine(staadType);
-			}
-			catch
-			{
 
-			}
-
-		}
+        //OpenSTAAD OSt = System.Runtime.InteropServices.Marshal.BindToMoniker("SH011");
+		
+        public static OpenSTAAD Quit()
+        {
+            return null;
+        }
 
 	}
 }
