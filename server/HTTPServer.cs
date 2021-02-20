@@ -7,7 +7,6 @@ namespace server
 {
 	public class HTTPServer
 	{
-
 		private bool isRunning = false;
 
 		private TcpListener listener;
