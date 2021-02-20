@@ -7,17 +7,16 @@ namespace server
   {
     static void Main(string[] args)
     {
-			Route.Add("/", (req, res, props) =>
-			{
-				res.AsText("Pasok!");
-			});
+	    Route.Add("/", (req, res, props) =>
+		{
+			res.AsText("Pasok!");
+		});
 
-
-			HttpServer.ListenAsync(
-				1630, 
-				CancellationToken.None,
-				Route.OnHttpRequestAsync
-				).Wait();
+		HttpServer.ListenAsync(
+			1630, 
+			CancellationToken.None,
+			Route.OnHttpRequestAsync
+			).Wait();
     }
   }
 }
