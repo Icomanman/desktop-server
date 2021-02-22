@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
@@ -8,7 +9,7 @@ namespace server.Staad.src
     class Helpers
     {
         [DllImport("ole32.dll")]
-        private static extern int GetRunningObjectsTable(
+        private static extern int GetRunningObjectTable(
             int reserved,
             out IRunningObjectTable prot
             );
@@ -44,7 +45,7 @@ namespace server.Staad.src
                 IEnumMoniker monikerEnum;
                 IMoniker[] monikers = new IMoniker[1];
 
-                GetRunningObjectsTable(0, out runningObjectTable);
+                GetRunningObjectTable(0, out runningObjectTable);
 
                 runningObjectTable.EnumRunning(out monikerEnum);
                 monikerEnum.Reset();
@@ -78,5 +79,45 @@ namespace server.Staad.src
             }
         }
 
+        // alternate implementation of getting running objects (using Hashtable then unboxing)
+        public static Hashtable GetRunningObjHash()
+        {
+            try
+            {
+                Hashtable result = new Hashtable();
+
+                IntPtr numFetched = new IntPtr();
+                IRunningObjectTable runningObjectTable;
+                IEnumMoniker monikerEnum;
+                IMoniker[] monikers = new IMoniker[1];
+
+                GetRunningObjectTable(0, out runningObjectTable);
+
+                runningObjectTable.EnumRunning(out monikerEnum);
+                monikerEnum.Reset();
+
+                while (monikerEnum.Next(1, monikers, numFetched) == 0)
+                {
+                    IBindCtx ctx;
+                    CreateBindCtx(0, out ctx);
+
+                    string runningObjName;
+                    monikers[0].GetDisplayName(ctx, null, out runningObjName);
+
+                    object runningObjVal;
+                    runningObjectTable.GetObject(monikers[0], out runningObjVal);
+
+                    result[runningObjName] = runningObjVal;
+                }
+
+                return result;
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine("Helpers.alt: " + e.ToString());
+                throw;
+            }
+        }
     }
 }

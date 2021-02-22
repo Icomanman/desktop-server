@@ -9,7 +9,7 @@ namespace server
 {
     class Program
     {
-        
+
         public static void Main(string[] args)
         {
             //Route.Add("/", (req, res, props) =>
@@ -23,10 +23,12 @@ namespace server
             //	Route.OnHttpRequestAsync
             //	).Wait();
             bool isStaadRunning = false;
+            OpenSTAAD OSt;
 
-            isStaadRunning = StaadMain.Connect();
+            // isStaadRunning = StaadMain.Connect();
+            OSt = StaadMain.Connect();
 
-            if(isStaadRunning == false)
+            if (OSt == null)
             {
                 Console.WriteLine("No instance of Staad was found.");
             }
