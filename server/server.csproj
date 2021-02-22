@@ -99,6 +99,7 @@
     <Compile Include="Request.cs" />
     <Compile Include="Response.cs" />
     <Compile Include="Robot\src\Robot.cs" />
+    <Compile Include="Staad\src\Helpers.cs" />
     <Compile Include="Staad\src\StaadMain.cs" />
     <Compile Include="ThreadClient.cs" />
   </ItemGroup>

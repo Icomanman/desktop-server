@@ -7,34 +7,32 @@ using OpenSTAADUI;
 
 namespace server
 {
-	class Program
-	{
-		public static void Main(string[] args)
-		{
-			//Route.Add("/", (req, res, props) =>
-			//{
-			//	res.AsText("pasok!");
-			//});
+    class Program
+    {
+        
+        public static void Main(string[] args)
+        {
+            //Route.Add("/", (req, res, props) =>
+            //{
+            //	res.AsText("pasok!");
+            //});
 
-			//HttpServer.ListenAsync(
-			//	1630,
-			//	CancellationToken.None,
-			//	Route.OnHttpRequestAsync
-			//	).Wait();
+            //HttpServer.ListenAsync(
+            //	1630,
+            //	CancellationToken.None,
+            //	Route.OnHttpRequestAsync
+            //	).Wait();
+            bool isStaadRunning = false;
 
-			//StaadMain.Tak();
-			StaadMain.Connect();
-			//if (OSt != null)
-			//{
-			//	object bs;
-			//	bs = OSt.GetBaseUnit();
-			//	Console.WriteLine("Pumasok " + bs);
-			//}
+            isStaadRunning = StaadMain.Connect();
 
-			Console.ReadKey();
+            if(isStaadRunning == false)
+            {
+                Console.WriteLine("No instance of Staad was found.");
+            }
 
-			//RobotMain.Bot();
+            Console.ReadKey();
 
-		}
-	}
+        }
+    }
 }
