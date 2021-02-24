@@ -133,5 +133,11 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VBConsole\VBConsole.vbproj">
+      <Project>{72248a4f-0edc-4dc1-9959-b25596dab09e}</Project>
+      <Name>VBConsole</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

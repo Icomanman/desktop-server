@@ -59,5 +59,15 @@ namespace server.Staad.src
             return OSt;
         }
 
+
+        public static void OpenApp()
+        {
+
+            string path = @"C:\Users\GiulianoDiEnrico\Documents\010 Swan House\Outgoing\B Calcs\STAAD Models\SH - 011.std";
+            var staadHandler = new OpenSTAADClass();
+
+            staadHandler.OpenSTAADFile(path);
+
+        }
     }
 }
